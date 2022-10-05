@@ -3,7 +3,7 @@ using SqliteMVP.Repositories;
 
 namespace SqliteMVP.Presenters
 {
-    public partial class FormUsuarioListar : Form
+    public partial class FormUsuarioListar : Form, IUsuarioView
     {
         private IUsuarioRepository _usuarioRepository;
         private BindingSource _bindingSource;
@@ -13,14 +13,63 @@ namespace SqliteMVP.Presenters
         {
             _usuarioRepository = repository;
             _bindingSource = new BindingSource();
-            _listaUsuarios = _usuarioRepository.listar();
-            _bindingSource.DataSource = _listaUsuarios;
+            //_listaUsuarios = _usuarioRepository.listar();
+            //_bindingSource.DataSource = _listaUsuarios;
             InitializeComponent();
+        }
+
+        public string usuarioId { 
+            get
+            {
+                return textBoxUsuarioId.Text;
+            }
+            set 
+            {
+                textBoxUsuarioId.Text = value;
+            }
+        }
+        public string usuarioNome
+        {
+            get
+            {
+                return textBoxUsuarioNome.Text;
+            }
+            set
+            {
+                textBoxUsuarioNome.Text = value;
+            }
         }
 
         private void FormUsuarioListar_Load(object sender, EventArgs e)
         {
+            updateDataSource();
             dataGridView1.DataSource = _bindingSource;
+        }
+
+        private void updateDataSource()
+        {
+            _listaUsuarios = _usuarioRepository.listar();
+            _bindingSource.DataSource = _listaUsuarios;
+        }
+
+        private void clearForm()
+        {
+            this.usuarioId = "";
+            this.usuarioNome = "";
+        }
+
+        private void buttonIncluir_Click(object sender, EventArgs e)
+        {
+            UsuarioModel usuarioModel = new UsuarioModel();
+            usuarioModel.nome = this.usuarioNome;
+            _usuarioRepository.adicionar(usuarioModel);
+            updateDataSource();
+            clearForm();
+        }
+
+        private void buttonLimpar_Click(object sender, EventArgs e)
+        {
+            clearForm();
         }
     }
 }

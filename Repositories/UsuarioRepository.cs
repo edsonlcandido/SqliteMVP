@@ -10,9 +10,22 @@ namespace SqliteMVP.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
+        private string CONNECTION_STRING = @"Data SOurce=dataBase.db;Version=3;";
         public void adicionar(UsuarioModel usuarioModel)
         {
-            throw new NotImplementedException();
+            SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING);
+            SQLiteCommand command = new SQLiteCommand();
+            connection.Open();
+            command.Connection = connection;
+            command.CommandText = @"INSERT INTO usuario (
+                        nome
+                    )
+                    VALUES (
+                        @nome
+                    );";
+            command.Parameters.Add("@nome", System.Data.DbType.String).Value = usuarioModel.nome;           
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         public void deletar(UsuarioModel usuarioModel)
@@ -28,7 +41,7 @@ namespace SqliteMVP.Repositories
         public IEnumerable<UsuarioModel> listar()
         {
             List<UsuarioModel> listaUsuario = new List<UsuarioModel>();
-            SQLiteConnection connection = new SQLiteConnection(@"Data SOurce=dataBase.db;Version=3;");
+            SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING);
             SQLiteCommand command = new SQLiteCommand();
             command.CommandText = @"SELECT id,
                                            nome

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SqliteMVP.Presenters.FormUsuarioListar">
+    <Position X="3.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAIQACAAhAIAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Presenters\FormUsuarioListar.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SqliteMVP.Models.UsuarioModel">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\UsuarioModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SqliteMVP.Repositories.UsuarioRepository">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEBAAAAAAEAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Repositories\UsuarioRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Interface Name="SqliteMVP.Models.IUsuarioRepository">
+    <Position X="6.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEBAAAAAAEAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\IUsuarioRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SqliteMVP.IUsuarioView">
+    <Position X="6.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAACAAAAIAAAAAA=</HashCode>
+      <FileName>IUsuarioView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
