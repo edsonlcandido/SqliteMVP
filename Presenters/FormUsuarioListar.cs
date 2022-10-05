@@ -71,5 +71,24 @@ namespace SqliteMVP.Presenters
         {
             clearForm();
         }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            UsuarioModel usuarioModel = (UsuarioModel)_bindingSource.Current;
+            this.usuarioId = usuarioModel.id.ToString();
+            this.usuarioNome = usuarioModel.nome;
+            buttonSalvar.Enabled = true;
+        }
+
+        private void buttonSalvar_Click(object sender, EventArgs e)
+        {
+            UsuarioModel usuarioModel = new UsuarioModel();
+            usuarioModel.id = Convert.ToInt64(this.usuarioId);
+            usuarioModel.nome = this.usuarioNome;
+            _usuarioRepository.editar(usuarioModel);
+            buttonSalvar.Enabled=false;
+            updateDataSource();
+            clearForm();
+        }
     }
 }

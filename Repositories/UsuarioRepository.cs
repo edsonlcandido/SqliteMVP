@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using System.Data;
 
 namespace SqliteMVP.Repositories
 {
@@ -18,24 +19,34 @@ namespace SqliteMVP.Repositories
             connection.Open();
             command.Connection = connection;
             command.CommandText = @"INSERT INTO usuario (
-                        nome
-                    )
-                    VALUES (
-                        @nome
-                    );";
+                                                nome
+                                            )
+                                            VALUES (
+                                                @nome
+                                            );";
             command.Parameters.Add("@nome", System.Data.DbType.String).Value = usuarioModel.nome;           
             command.ExecuteNonQuery();
             connection.Close();
         }
 
-        public void deletar(UsuarioModel usuarioModel)
+        public void deletar(int id)
         {
             throw new NotImplementedException();
         }
 
         public void editar(UsuarioModel usuarioModel)
         {
-            throw new NotImplementedException();
+            SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING);
+            SQLiteCommand command=  new SQLiteCommand();
+            connection.Open();
+            command.Connection=connection;
+            command.CommandText = @"UPDATE usuario
+                                       SET nome = @nome
+                                     WHERE id = @id;";
+            command.Parameters.Add("@nome", DbType.String).Value = usuarioModel.nome;
+            command.Parameters.Add("id", DbType.Int64).Value = usuarioModel.id;
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         public IEnumerable<UsuarioModel> listar()

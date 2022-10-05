@@ -97,12 +97,14 @@
             // 
             // buttonSalvar
             // 
+            this.buttonSalvar.Enabled = false;
             this.buttonSalvar.Location = new System.Drawing.Point(297, 77);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(75, 23);
             this.buttonSalvar.TabIndex = 5;
             this.buttonSalvar.Text = "Salvar";
             this.buttonSalvar.UseVisualStyleBackColor = true;
+            this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
             // buttonEditar
             // 
@@ -112,6 +114,7 @@
             this.buttonEditar.TabIndex = 6;
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
             // buttonIncluir
             // 

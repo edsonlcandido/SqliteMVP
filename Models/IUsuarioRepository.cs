@@ -10,7 +10,7 @@ namespace SqliteMVP.Models
     {
         void adicionar(UsuarioModel usuarioModel);
         void editar(UsuarioModel usuarioModel);
-        void deletar(UsuarioModel usuarioModel);
+        void deletar(int id);
         IEnumerable<UsuarioModel> listar();
     }
 }
