@@ -31,7 +31,15 @@ namespace SqliteMVP.Repositories
 
         public void deletar(int id)
         {
-            throw new NotImplementedException();
+            SQLiteConnection connection = new SQLiteConnection(CONNECTION_STRING);
+            SQLiteCommand command = new SQLiteCommand();
+            connection.Open();
+            command.Connection = connection;
+            command.CommandText = @"DELETE FROM usuario
+                                          WHERE id = @id;";
+            command.Parameters.Add("id", DbType.Int64).Value = id;
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         public void editar(UsuarioModel usuarioModel)

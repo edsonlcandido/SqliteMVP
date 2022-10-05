@@ -90,5 +90,18 @@ namespace SqliteMVP.Presenters
             updateDataSource();
             clearForm();
         }
+
+        private void buttonDeletar_Click(object sender, EventArgs e)
+        {
+            UsuarioModel usuarioModel = (UsuarioModel)_bindingSource.Current;
+            var result = MessageBox.Show(
+@$"Deseja deletar o usuario selecionado?
+{usuarioModel.nome}", "Alerta de deleção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                _usuarioRepository.deletar((int)usuarioModel.id);
+                updateDataSource();
+            }
+        }
     }
 }
